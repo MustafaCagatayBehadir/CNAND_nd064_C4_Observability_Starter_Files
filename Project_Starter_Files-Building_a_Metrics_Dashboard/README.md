@@ -51,3 +51,9 @@ Description:
 
 ## Final Dashboard
 *TODO*: Create a Dashboard containing graphs that capture all the metrics of your KPIs and adequately representing your SLIs and SLOs. Include a screenshot of the dashboard here, and write a text description of what graphs are represented in the dashboard.  
+
+## NOTES
+*FORWARD PORTS*: 
+kubectl port-forward service/prometheus-grafana --address 0.0.0.0 3000:80 -n monitoring
+kubectl port-forward service/udacity-jaeger-query --address 0.0.0.0 16686:16686 -n observability
+kubectl port-forward service/frontend-service --address 0.0.0.0 8080:8080
