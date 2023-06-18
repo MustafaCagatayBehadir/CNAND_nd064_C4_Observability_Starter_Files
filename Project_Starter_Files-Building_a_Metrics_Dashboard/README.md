@@ -12,9 +12,19 @@
 
 ## Describe SLO/SLI
 *TODO:* Describe, in your own words, what the SLIs are, based on an SLO of *monthly uptime* and *request response time*.
+We have the following SLOs:
+1. The application will have an uptime of 99.9% at each month.
+2. The average time taken to return a request will be less than 200 ms, during the month.
+
+For the SLOs above we can describe SLIs as below:
+1. We achieved 99.5% uptime during the month of May.
+2. The average time taken to return a request during the month of May was 190 ms.
 
 ## Creating SLI metrics.
-*TODO:* It is important to know why we want to measure certain metrics for our customer. Describe in detail 5 metrics to measure these SLIs. 
+*TODO:* It is important to know why we want to measure certain metrics for our customer. Describe in detail 5 metrics to measure these SLIs.
+1. Requests per second: Requests per second, or throughput, measures how many requests an application, website or software program receives each second. Typically, more requests per second can result in slower response times.
+2. Error Rate: The percentage of errors that occur during a specific time period. This can help identify issues with the web application, such as server downtime, broken links or failed requests.
+3. Average response time: Average response time (ART) is a measurement of the amount of time a server or application takes to respond to all of its data inputs and requests. A lower average response time typically means better performance, as the server or application takes less time to respond to new requests.
 
 ## Create a Dashboard to measure our SLIs
 *TODO:* Create a dashboard to measure the uptime of the frontend and backend services We will also want to measure to measure 40x and 50x errors. Create a dashboard that show these values over a 24 hour period and take a screenshot.
