@@ -25,6 +25,8 @@ For the SLOs above we can describe SLIs as below:
 1. Requests per second: Requests per second, or throughput, measures how many requests an application, website or software program receives each second. Typically, more requests per second can result in slower response times.
 2. Error Rate: The percentage of errors that occur during a specific time period. This can help identify issues with the web application, such as server downtime, broken links or failed requests.
 3. Average response time: Average response time (ART) is a measurement of the amount of time a server or application takes to respond to all of its data inputs and requests. A lower average response time typically means better performance, as the server or application takes less time to respond to new requests.
+4. Peak response time: Measures the longest response time for a total number of requests that travel across the server.
+5. CPU usage: CPU usage affects the responsiveness of an application. High spikes in CPU usage might indicate several problems.
 
 ## Create a Dashboard to measure our SLIs
 *TODO:* Create a dashboard to measure the uptime of the frontend and backend services We will also want to measure to measure 40x and 50x errors. Create a dashboard that show these values over a 24 hour period and take a screenshot.
@@ -63,7 +65,14 @@ Description:
 *TODO*: Create a Dashboard containing graphs that capture all the metrics of your KPIs and adequately representing your SLIs and SLOs. Include a screenshot of the dashboard here, and write a text description of what graphs are represented in the dashboard.  
 
 ## NOTES
+*HELM Installation*:
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
 *FORWARD PORTS*: 
 kubectl port-forward service/prometheus-grafana --address 0.0.0.0 3000:80 -n monitoring
-kubectl port-forward service/udacity-jaeger-query --address 0.0.0.0 16686:16686 -n observability
-kubectl port-forward service/frontend-service --address 0.0.0.0 8080:8080
+kubectl port-forward service/prometheus-kube-prometheus-prometheus --address 0.0.0.0 9090:9090 -n monitoring
+kubectl port-forward service/my-traces-query --address 0.0.0.0 16686:16686 -n observability
+kubectl port-forward replicaset/backend-f87b574b9 --address 0.0.0.0 8081:8081
+
+*CREATE HTTP REQUESTS BACKEND*:
+for i in {1..100}; do curl 127.0.0.1:8081; done
