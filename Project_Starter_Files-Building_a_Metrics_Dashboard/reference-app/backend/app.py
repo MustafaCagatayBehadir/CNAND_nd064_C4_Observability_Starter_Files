@@ -1,3 +1,4 @@
+from time import sleep
 from flask import Flask, request, jsonify
 from flask_pymongo import PyMongo
 from prometheus_flask_exporter import PrometheusMetrics
@@ -46,6 +47,16 @@ def my_api():
     with opentracing.tracer.start_span('backend-service-api', child_of=parent_span) as span:
         answer = "something"
         span.set_tag("get-api", answer)
+    return jsonify(repsonse=answer)
+
+
+@app.route("/slowness")
+def slowness():
+    parent_span = flask_tracer.get_span()
+    with opentracing.tracer.start_span('backend-service-slowness', child_of=parent_span) as span:
+        answer = "something with latency"
+        span.set_tag("get-slowness", answer)
+        sleep(5)
     return jsonify(repsonse=answer)
 
 
